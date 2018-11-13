@@ -9,7 +9,6 @@ import {
   ActionSettingsChangeAutoNightMode,
   ActionSettingsChangeLanguage,
   ActionSettingsChangeTheme,
-  ActionSettingsPersist,
   ActionSettingsChangeStickyHeader
 } from '../settings.actions';
 import { SettingsState } from '../settings.model';
@@ -58,37 +57,31 @@ export class SettingsContainerComponent implements OnInit, OnDestroy {
 
   onLanguageSelect({ value: language }) {
     this.store.dispatch(new ActionSettingsChangeLanguage({ language }));
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 
   onThemeSelect({ value: theme }) {
     this.store.dispatch(new ActionSettingsChangeTheme({ theme }));
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 
   onAutoNightModeToggle({ checked: autoNightMode }) {
     this.store.dispatch(
       new ActionSettingsChangeAutoNightMode({ autoNightMode })
     );
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 
   onStickyHeaderToggle({ checked: stickyHeader }) {
     this.store.dispatch(new ActionSettingsChangeStickyHeader({ stickyHeader }));
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 
   onPageAnimationsToggle({ checked: pageAnimations }) {
     this.store.dispatch(
       new ActionSettingsChangeAnimationsPage({ pageAnimations })
     );
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 
   onElementsAnimationsToggle({ checked: elementsAnimations }) {
     this.store.dispatch(
       new ActionSettingsChangeAnimationsElements({ elementsAnimations })
     );
-    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 }
